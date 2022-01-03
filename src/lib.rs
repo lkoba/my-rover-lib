@@ -139,8 +139,14 @@ mod tests {
     #[test]
     fn test_lerp_motor_exact() {
         ANGLES.iter().enumerate().for_each(|(idx, &i)| {
-            assert_eq!(lerp_array(i, ANGLES, MOTOR_A_ANGLE_SPEEDS), MOTOR_A_ANGLE_SPEEDS[idx]);
-            assert_eq!(lerp_array(i, ANGLES, MOTOR_B_ANGLE_SPEEDS), MOTOR_B_ANGLE_SPEEDS[idx]);
+            assert_eq!(
+                lerp_array(i, ANGLES, MOTOR_A_ANGLE_SPEEDS),
+                MOTOR_A_ANGLE_SPEEDS[idx]
+            );
+            assert_eq!(
+                lerp_array(i, ANGLES, MOTOR_B_ANGLE_SPEEDS),
+                MOTOR_B_ANGLE_SPEEDS[idx]
+            );
         });
     }
     #[test]
@@ -149,11 +155,16 @@ mod tests {
     }
     #[test]
     fn test_lerp_motor_min_clamp() {
-        assert_eq!(lerp_array(-1000., ANGLES, MOTOR_A_ANGLE_SPEEDS), MOTOR_A_ANGLE_SPEEDS[0]);
+        assert_eq!(
+            lerp_array(-1000., ANGLES, MOTOR_A_ANGLE_SPEEDS),
+            MOTOR_A_ANGLE_SPEEDS[0]
+        );
     }
     #[test]
     fn test_lerp_motor_max_clamp() {
-        assert_eq!(lerp_array(1000., ANGLES, MOTOR_A_ANGLE_SPEEDS), MOTOR_A_ANGLE_SPEEDS[MOTOR_A_ANGLE_SPEEDS.len() - 1]);
+        assert_eq!(
+            lerp_array(1000., ANGLES, MOTOR_A_ANGLE_SPEEDS),
+            MOTOR_A_ANGLE_SPEEDS[MOTOR_A_ANGLE_SPEEDS.len() - 1]
+        );
     }
-
 }
