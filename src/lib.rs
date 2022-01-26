@@ -1,7 +1,7 @@
 type AngleArray = [f32; 9];
 static ANGLES: AngleArray = [-180., -135., -90., -45., 0., 45., 90., 135., 180.];
-static MOTOR_A_ANGLE_SPEEDS: AngleArray = [-1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 1.0, 0.0, -1.0];
-static MOTOR_B_ANGLE_SPEEDS: AngleArray = [-1.0, 0.0, 1.0, 1.0, 1.0, 0.0, -1.0, -1.0, -1.0];
+static MOTOR_A_ANGLE_SPEEDS: AngleArray = [-1.0, 0.0, -1.0, 0.0, 1.0, 1.0, 1.0, -1.0, -1.0];
+static MOTOR_B_ANGLE_SPEEDS: AngleArray = [-1.0, -1.0, 1.0, 1.0, 1.0, 0.0, -1.0, 0.0, -1.0];
 
 pub fn lerp(value: f32, min_input: f32, max_input: f32, min_output: f32, max_output: f32) -> f32 {
     return min_output
@@ -108,12 +108,12 @@ mod tests {
 
     #[test]
     fn test_motor_vectors_full_throttle_e() {
-        test_motor_vectors(-1., 0., -1., 1.);
+        test_motor_vectors(1., 0., 1., -1.);
     }
 
     #[test]
     fn test_motor_vectors_full_throttle_se() {
-        test_motor_vectors(-1., -1., -1., 0.);
+        test_motor_vectors(1., -1., -1., 0.);
     }
 
     #[test]
@@ -123,17 +123,17 @@ mod tests {
 
     #[test]
     fn test_motor_vectors_full_throttle_sw() {
-        test_motor_vectors(-1., -1., -1., 0.);
+        test_motor_vectors(-1., -1., 0., -1.);
     }
 
     #[test]
     fn test_motor_vectors_full_throttle_w() {
-        test_motor_vectors(1., 0., 1., -1.);
+        test_motor_vectors(-1., 0., -1., 1.);
     }
 
     #[test]
     fn test_motor_vectors_full_throttle_ne() {
-        test_motor_vectors(1., 1., 1., -0.);
+        test_motor_vectors(1., 1., 1., 0.);
     }
 
     #[test]
